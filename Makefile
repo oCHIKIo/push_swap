@@ -32,30 +32,28 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) 
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -Lnot_your_libft -lft 
-	@echo "\033[0;32mCompilation successful\033[0m"
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -Lnot_your_libft -lft 
 
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJ_BONUS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(NAME_BONUS) -Lnot_your_libft -lft 
-	@echo "\033[0;32mCompilation successful\033[0m"
+	$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(NAME_BONUS) -Lnot_your_libft -lft 
 
 
 $(LIBFT):
-	@make -s bonus -C not_your_libft 
-	@make -s -C not_your_libft 
+	make -s bonus -C not_your_libft 
+	make -s -C not_your_libft 
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -Inot_your_libft -c $< -o $@
+	$(CC) $(CFLAGS) -Inot_your_libft -c $< -o $@
 
 clean:
-	@rm	-f	$(OBJ) $(OBJ_BONUS)
-	@make -C not_your_libft clean 
+	rm	-f	$(OBJ) $(OBJ_BONUS)
+	make -C not_your_libft clean 
 
 fclean: clean
-	@rm	-f	$(NAME) $(NAME_BONUS)
-	@make -C not_your_libft fclean
+	rm	-f	$(NAME) $(NAME_BONUS)
+	make -C not_your_libft fclean
 
 re:	fclean	all	
 
