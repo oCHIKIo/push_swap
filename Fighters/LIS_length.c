@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:06:34 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/12 12:29:16 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:29:49 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,30 @@ void	initialize_tabs(long int arr[][6666], t_list *node, int size)
 	while (x < size)
 		arr[1][x++] = LONG_MAX;
 }
+
 void	fill_second_array(long int arr[][6666], int node_size)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (i < node_size)
+	x = 0;
+	while (x < node_size)
 	{
-		j = 0;
-		while (j < node_size)
+		y = 0;
+		while (y < node_size)
 		{
-			if (arr[1][j] > arr[0][i])
+			if (arr[1][y] > arr[0][x])
 			{
-				arr[1][j] = arr[0][i];
+				arr[1][y] = arr[0][x];
 				break ;
 			}
-			j++;
+			y++;
 		}
-		i++;
+		x++;
 	}
 }
-void	hunt_for_LIS_in_second_array(long int arr_2[], int *lis, int node_size)
+
+void	hunt_for_lis_in_second_array(long int arr_2[], int *lis, int node_size)
 {
 	int	i;
 	int	j;
@@ -67,7 +69,8 @@ void	hunt_for_LIS_in_second_array(long int arr_2[], int *lis, int node_size)
 	if (i > *lis)
 		*lis = i;
 }
-int	LIS_length_hunter(t_list *node)
+
+int	lis_length_hunter(t_list *node)
 {
 	int			*lis;
 	long int	arr[2][6666];
@@ -79,11 +82,12 @@ int	LIS_length_hunter(t_list *node)
 	node_size = ft_lstsize(node);
 	initialize_tabs(arr, node, 6666);
 	fill_second_array(arr, node_size);
-	hunt_for_LIS_in_second_array(arr[1], lis, node_size);
+	hunt_for_lis_in_second_array(arr[1], lis, node_size);
 	return (*lis);
 	(void)arr;
 }
-int	LIS_length(t_list *stack)
+
+int	lis_length(t_list *stack)
 {
 	t_list	*current;
 	int		lis_length;
@@ -97,7 +101,7 @@ int	LIS_length(t_list *stack)
 	current = stack;
 	while (cr7_is_the_goat)
 	{
-		tmp = LIS_length_hunter(current);
+		tmp = lis_length_hunter(current);
 		if (tmp > lis_length)
 			lis_length = tmp;
 		current = current->next;

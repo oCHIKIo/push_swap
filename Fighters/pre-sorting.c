@@ -6,13 +6,13 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:49:09 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/13 14:52:52 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:38:00 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	is_in_LIS_arr(t_list *node, int *lis_arr)
+int	is_in_lis_arr(t_list *node, int *lis_arr)
 {
 	int	x;
 
@@ -26,6 +26,7 @@ int	is_in_LIS_arr(t_list *node, int *lis_arr)
 	(void)node;
 	return (0);
 }
+
 int	stack_a_is_ordered(t_list *stack)
 {
 	t_list	*current;
@@ -38,7 +39,7 @@ int	stack_a_is_ordered(t_list *stack)
 	while (1)
 	{
 		if (*current->content > *current->next->content)
-		found_rev += 1;
+			found_rev += 1;
 		current = current->next;
 		if (current == stack)
 			break ;
@@ -48,6 +49,7 @@ int	stack_a_is_ordered(t_list *stack)
 	else
 		return (0);
 }
+
 int	stack_a_is_reversed(t_list *stack)
 {
 	t_list	*current;
@@ -60,7 +62,7 @@ int	stack_a_is_reversed(t_list *stack)
 	while (1)
 	{
 		if (*current->content < *current->next->content)
-		found_rev += 1;
+			found_rev += 1;
 		current = current->next;
 		if (current == stack)
 			break ;
@@ -70,7 +72,8 @@ int	stack_a_is_reversed(t_list *stack)
 	else
 		return (0);
 }
-void		pre_sort_over_50(t_value *data, int *lis_arr)
+
+void	pre_sort_over_50(t_value *data, int *lis_arr)
 {
 	int	x;
 
@@ -79,7 +82,7 @@ void		pre_sort_over_50(t_value *data, int *lis_arr)
 	{
 		while (x > 0)
 		{
-			if (data && data->stack_a && is_in_LIS_arr(data->stack_a, lis_arr))
+			if (data && data->stack_a && is_in_lis_arr(data->stack_a, lis_arr))
 				operation_rotate_single(&data->stack_a, ra);
 			else if (data && data->stack_a
 				&& *data->stack_a->content > data->devider_arr[0])
@@ -95,13 +98,14 @@ void		pre_sort_over_50(t_value *data, int *lis_arr)
 		}
 	}
 }
+
 void	pre_sort_stack_a(t_value *data, int *lis_arr)
 {
 	if (ft_lstsize(data->stack_a) <= 50)
 	{
 		while (!stack_a_is_ordered(data->stack_a))
 		{
-			if (!is_in_LIS_arr(data->stack_a, lis_arr))
+			if (!is_in_lis_arr(data->stack_a, lis_arr))
 				operation_push(data, a_to_b);
 			else
 				operation_rotate_single(&data->stack_a, ra);

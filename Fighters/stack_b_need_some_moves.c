@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:11:04 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/13 03:00:21 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/17 17:30:10 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	find_optimal_forward_moves_stack_b(t_value *data, t_list *node,
 	}
 	if (x < *tmp_max_possible)
 	{
-		tmp_moves_needed[0] = x;
+		tmp_moves_needed[0] = x; /* stores the number of rb*/
 		*tmp_max_possible = x;
 	}
 }

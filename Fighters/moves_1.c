@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:48:20 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/12 13:21:10 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:30:30 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,18 @@ void	operation_print(enum t_operation operation)
 	operations[pb] = "pb";
 	if (operations[operation] != NULL)
 	{
-		write(1, operations[operation],
-			ft_strlen(operations[operation]));
+		write(1, operations[operation], ft_strlen(operations[operation]));
 		write(1, "\n", 1);
 	}
 }
+
 void	operation_swap_single(t_list *stack, enum t_operation operation)
 {
 	if (stack && stack->next)
 		swap_node_data(stack, stack->next);
 	operation_print(operation);
 }
+
 void	operation_swap_double(t_value *data)
 {
 	if (data->stack_a && data->stack_a->next && data->stack_b

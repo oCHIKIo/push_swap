@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:10:11 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/14 15:19:12 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:52:13 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,37 @@ void	just_one_node_to_check_in_stack_b(t_value *data, int tmp_moves_needed[],
 {
 	if ((!data->stack_a || (data->stack_a->next == data->stack_a)))
 	{
-		tmp_moves_needed[1] = 0;                 /* handles the case where stack_a has only one node or is empty*/
+		tmp_moves_needed[1] = 0;
+			/* handles the case where stack_a has only one node or is empty*/
 		*tmp_max_possible = 0;
 	}
 }
+
 int	should_break_here(t_list *current, int node_value)
 {
 	if ((*current->content < *current->prev->content
-			&& *current->content < *current->next->content)
-		&& ((*current->content < node_value
-				&& *current->prev->content < node_value)
-			|| (*current->content > node_value			/* if stack_a is [3, 5] and node_value is 4 it returns 1 because 4 fits between 3 and 5*/
-				&& *current->prev->content > node_value)))
+			&& *current->content < *current->next->content) &&
+		((*current->content < node_value
+				&& *current->prev->content < node_value) ||
+			(*current->content > node_value /* if stack_a is [3,
+				5] and node_value is 4 it returns 1 because 4 fits between 3 and 5*/
+			&& *current->prev->content > node_value)))
 		return (1);
 	if ((node_value < *current->content
 			&& node_value > *current->prev->content))
 		return (1);
 	return (0);
 }
+
 void	find_optimal_backward_moves_stack_a(t_value *data, t_list *node,
 		int tmp_moves_needed[], int *tmp_max_possible)
 {
 	t_list	*current;
 	int		x;
 	int		node_value;
-/*if stack_a is [5, 1, 2, 3] and node_value is 4 it calculates how many rra moves are needed to place 4 between 3 and 5*/
+
+	/*if stack_a is [5, 1, 2,
+		3] and node_value is 4 it calculates how many rra moves are needed to place 4 between 3 and 5*/
 	node_value = *node->content;
 	x = 0;
 	current = data->stack_a;
@@ -60,13 +66,16 @@ void	find_optimal_backward_moves_stack_a(t_value *data, t_list *node,
 		*tmp_max_possible = -x;
 	}
 }
+
 void	find_optimal_forward_moves_stack_a(t_value *data, t_list *node,
 		int tmp_moves_needed[], int *tmp_max_possible)
 {
 	t_list	*current;
 	int		x;
 	int		node_value;
- /*if stack_a is [1, 2, 3, 5] and node_value is 4 it calculates how many ra moves are needed to place 4 between 3 and 5*/
+
+	/*if stack_a is [1, 2, 3,
+		5] and node_value is 4 it calculates how many ra moves are needed to place 4 between 3 and 5*/
 	x = 0;
 	current = data->stack_a;
 	node_value = *node->content;
@@ -86,13 +95,16 @@ void	find_optimal_forward_moves_stack_a(t_value *data, t_list *node,
 		*tmp_max_possible = x;
 	}
 }
+
 void	moves_we_need_for_stack_a(t_value *data, t_list *node,
-	int tmp_moves_needed[], int *tmp_max_possible)
+		int tmp_moves_needed[], int *tmp_max_possible)
 {
 	if (!data || !node || !data->stack_a)
 		return ;
-	find_optimal_forward_moves_stack_a(data, node, tmp_moves_needed, tmp_max_possible);
-	find_optimal_backward_moves_stack_a(data, node, tmp_moves_needed, tmp_max_possible);
+	find_optimal_forward_moves_stack_a(data, node, tmp_moves_needed,
+		tmp_max_possible);
+	find_optimal_backward_moves_stack_a(data, node, tmp_moves_needed,
+		tmp_max_possible);
 	*tmp_max_possible = 0;
 	if (tmp_moves_needed[0] > 0)
 		*tmp_max_possible += tmp_moves_needed[0];

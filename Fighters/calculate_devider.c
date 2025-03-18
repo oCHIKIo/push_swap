@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 20:05:00 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/12 01:03:04 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:19:56 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	swap(int *a, int *b)
 	*a = *b;
 	*b = tmp;
 }
+
 void	devider_value(t_value *data, int tmp_tab[], int size)
 {
 	data->devider_arr[0] = tmp_tab[size / 2];
 }
+
 void	sort_just_for_devider(int size, int tmp_tab[])
 {
 	int	swap_occurred;
@@ -48,6 +50,7 @@ void	sort_just_for_devider(int size, int tmp_tab[])
 			break ;
 	}
 }
+
 void	calculate_devider(t_value *data, int *input_arr)
 {
 	int	x;

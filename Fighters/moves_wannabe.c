@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:11:40 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/12 12:38:06 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:31:23 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	swap_node_data(t_list *node1, t_list *node2)
 	node1->content = node2->content;
 	node2->content = tmp;
 }
+
 void	remove_top_node(t_list **stack)
 {
 	if (!stack || !*stack)
@@ -33,6 +34,7 @@ void	remove_top_node(t_list **stack)
 		*stack = (*stack)->next;
 	}
 }
+
 void	send_top_node(t_value *data, enum t_direction direction)
 {
 	t_list	*tmp;

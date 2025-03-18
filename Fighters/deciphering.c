@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:00:45 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/13 21:47:22 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:20:28 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	set_everything_null(char tmp_av[][11])
 		x++;
 	}
 }
+
 void	splitter(char *str, char tmp_av[][11], int *updated_ac)
 {
 	char	**tmp_input_arr;
@@ -49,18 +50,21 @@ void	splitter(char *str, char tmp_av[][11], int *updated_ac)
 		free(tmp_input_arr[x++]);
 	free(tmp_input_arr);
 }
-bool its_string(char *str)
-{
-    int x = 0;
 
-    while (str[x])
-    {
-        if (str[x] == 32 || str[x] == 9) 
-            return true;
-        x++;
-    }
-    return false;
+bool	its_string(char *str)
+{
+	int	x;
+
+	x = 0;
+	while (str[x])
+	{
+		if (str[x] == 32 || str[x] == 9)
+			return (true);
+		x++;
+	}
+	return (false);
 }
+
 char	**update_av(int updated_ac, char tmp_av[][11])
 {
 	int		x;
@@ -82,13 +86,13 @@ char	**update_av(int updated_ac, char tmp_av[][11])
 				free(new_av[x--]);
 			return (free(new_av), NULL);
 		}
-		ft_strlcpy(new_av[x], tmp_av[x - 1], ft_strlen(tmp_av[x - 1])
-			+ 1);
+		ft_strlcpy(new_av[x], tmp_av[x - 1], ft_strlen(tmp_av[x - 1]) + 1);
 		x++;
 	}
 	new_av[x] = NULL;
 	return (new_av);
 }
+
 char	**deciphering(int *ac, char **av)
 {
 	int		x;

@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:12:07 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/14 10:52:33 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:36:57 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	main(int ac, char **av)
 {
 	t_value	*data;
 	int		*input_arr;
-	int		*lis_arr;
+	int		*lis_tab;
 
-	lis_arr = NULL;
+	lis_tab = NULL;
 	if (ac == 1)
 		return (1);
 	av = deciphering(&ac, av);
@@ -68,13 +68,13 @@ int	main(int ac, char **av)
 		return (print_error(), free_everything(NULL, input_arr, NULL, av));
 	if (!create_stack(&data, input_arr, ac - 1))
 		return (print_error(), free_everything(data, input_arr, NULL, av));
-	if (stack_a_is_reversed(data->stack_a) && !stack_a_is_ordered(data->stack_a))
+	if (stack_a_is_reversed(data->stack_a)
+		&& !stack_a_is_ordered(data->stack_a))
 		operation_swap_single(data->stack_a, sa);
-	if (!LIS_arr(data->stack_a, &lis_arr, data))
-		return (print_error(), free_everything(data, input_arr, lis_arr, av));
+	if (!lis_arr(data->stack_a, &lis_tab, data))
+		return (print_error(), free_everything(data, input_arr, lis_tab, av));
 	calculate_devider(data, input_arr);
-	pre_sort_stack_a(data, lis_arr);
+	pre_sort_stack_a(data, lis_tab);
 	sort_stacks(data);
-	free_everything(data, input_arr, lis_arr, av);
-	return (0);
+	free_everything(data, input_arr, lis_tab, av);
 }

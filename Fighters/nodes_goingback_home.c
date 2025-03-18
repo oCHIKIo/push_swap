@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:50:27 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/14 11:44:51 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:32:14 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	initialize_variables(int moves_needed[], int tmp_moves_needed[],
 	tmp_moves_needed[1] = 0;
 	*lowest_move_cost = INT_MAX;
 }
+
 void	update_variables(int *lowest_move_cost, int *tmp_lowest_move_cost,
 		int moves_needed[], int tmp_moves_needed[])
 {
@@ -34,6 +35,7 @@ void	update_variables(int *lowest_move_cost, int *tmp_lowest_move_cost,
 	tmp_moves_needed[1] = 0;
 	*tmp_lowest_move_cost = INT_MAX;
 }
+
 void	going_back_home(t_value *data)
 {
 	t_list	*current;
