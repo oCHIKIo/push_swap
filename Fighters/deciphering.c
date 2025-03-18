@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:00:45 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/18 00:20:28 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 14:12:42 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_everything_null(char tmp_av[][11])
 	}
 }
 
-void	splitter(char *str, char tmp_av[][11], int *updated_ac)
+void	splitter(char *str, char tmp_av[][11], int *ac)
 {
 	char	**tmp_input_arr;
 	int		x;
@@ -40,9 +40,9 @@ void	splitter(char *str, char tmp_av[][11], int *updated_ac)
 	x = 0;
 	while (tmp_input_arr[x])
 	{
-		ft_strlcpy(tmp_av[*updated_ac], tmp_input_arr[x],
+		ft_strlcpy(tmp_av[*ac], tmp_input_arr[x],
 			ft_strlen(tmp_input_arr[x]) + 1);
-		(*updated_ac)++;
+		(*ac)++;
 		x++;
 	}
 	x = 0;

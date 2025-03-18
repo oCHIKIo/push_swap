@@ -6,20 +6,17 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:33:29 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/13 01:38:31 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 01:00:32 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int there_is_sign(char x)
+int	there_is_sign(char x)
 {
-    int sign;
-	sign = 0;
-    sign |= (x == 43);
-    sign |= (x == 45);
-    return sign;
+	return (x == '+' || x == '-');
 }
+
 int	is_beyond_int_limits(const char *str)
 {
 	int			sign;
@@ -42,6 +39,7 @@ int	is_beyond_int_limits(const char *str)
 		return (1);
 	return (0);
 }
+
 int	is_well_formed_number(char *num)
 {
 	int	x;
@@ -49,10 +47,10 @@ int	is_well_formed_number(char *num)
 	x = 0;
 	while (num[x])
 	{
-		if (!ft_isdigit(num[x]) && (!there_is_sign(num[x])))
+		if (!ft_isdigit(num[x]) && !there_is_sign(num[x]))
 			return (0);
-		if (there_is_sign(num[x]) && ((!(num[x + 1]) || there_is_sign(num[x
-						+ 1])) || (x != 0 && (num[x - 1]))))
+		if (there_is_sign(num[x]) && (!num[x + 1] || there_is_sign(num[x + 1])
+				|| (x != 0 && num[x - 1])))
 			return (0);
 		x++;
 	}
@@ -60,6 +58,7 @@ int	is_well_formed_number(char *num)
 		return (0);
 	return (1);
 }
+
 int	understanding_deciphering(char **av, int ac)
 {
 	int	x;

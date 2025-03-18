@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:13:21 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/13 03:13:13 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/18 00:57:33 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	string_to_integer(int ac, char **av, int **input_arr)
 		(*input_arr)[x - 1] = ft_atoi(av[x]);
 	return (1);
 }
+
 int	create_stack(t_value **data, int *input_arr, int arr_size)
 {
 	int		x;
