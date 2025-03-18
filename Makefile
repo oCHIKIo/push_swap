@@ -1,7 +1,5 @@
 NAME = push_swap
 
-NAME_BONUS = checker
-
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
@@ -39,13 +37,13 @@ $(LIBFT):
 	$(CC) $(CFLAGS) -Inot_your_libft -c $< -o $@
 
 clean:
-	rm	-f	$(OBJ) $(OBJ_BONUS)
+	rm -f $(OBJ)
 	make -C not_your_libft clean 
 
 fclean: clean
-	rm	-f	$(NAME) $(NAME_BONUS)
+	rm -f $(NAME)
 	make -C not_your_libft fclean
 
-re:	fclean	all	
+re: fclean all	
 
 .PHONY: all clean fclean re
