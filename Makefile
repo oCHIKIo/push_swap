@@ -25,25 +25,39 @@ SRC =	Fighters/moves_1.c \
 
 OBJ = $(SRC:.c=.o)
 
+REBUILDING = 0
+
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) 
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -Lnot_your_libft -lft 
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -Lnot_your_libft -lft 
+	@if [ $(REBUILDING) -eq 0 ]; then \
+		printf "\033[1;32m🐺 Push_swap built successfully! 🐺\033[0m\n"; \
+	fi
 
 $(LIBFT):
-	make -s -C not_your_libft 
+	@make -s -C not_your_libft 
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Inot_your_libft -c $< -o $@
+	@$(CC) $(CFLAGS) -Inot_your_libft -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
-	make -C not_your_libft clean 
+	@rm -f $(OBJ)
+	@make -s -C not_your_libft clean 
+	@if [ $(REBUILDING) -eq 0 ] && [ "$(MAKECMDGOALS)" = "clean" ]; then \
+		printf "\033[1;31m🐺 Cleaned successfully! 🐺\033[0m\n"; \
+	fi
 
 fclean: clean
-	rm -f $(NAME)
-	make -C not_your_libft fclean
+	@rm -f $(NAME)
+	@make -s -C not_your_libft fclean
+	@if [ $(REBUILDING) -eq 0 ] && [ "$(MAKECMDGOALS)" = "fclean" ]; then \
+		printf "\033[1;33m🐺 Force Cleaned successfully! 🐺\033[0m\n"; \
+	fi
 
-re: fclean all	
+re: 
+	@$(MAKE) --no-print-directory fclean REBUILDING=1
+	@$(MAKE) --no-print-directory all REBUILDING=1
+	@printf "\033[1;34m🐺 Rebuilt successfully! 🐺\033[0m\n"
 
 .PHONY: all clean fclean re
