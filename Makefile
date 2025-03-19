@@ -32,7 +32,7 @@ all: $(NAME)
 $(NAME): $(OBJ) $(LIBFT) 
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -Lnot_your_libft -lft 
 	@if [ $(REBUILDING) -eq 0 ]; then \
-		printf "\033[1;32m🐺 Push_swap built successfully! 🐺\033[0m\n"; \
+		printf "\033[1;32m🐺 Push_swap Built Successfully! 🐺\033[0m\n"; \
 	fi
 
 $(LIBFT):
@@ -45,19 +45,19 @@ clean:
 	@rm -f $(OBJ)
 	@make -s -C not_your_libft clean 
 	@if [ $(REBUILDING) -eq 0 ] && [ "$(MAKECMDGOALS)" = "clean" ]; then \
-		printf "\033[1;31m🐺 Cleaned successfully! 🐺\033[0m\n"; \
+		printf "\033[1;31m🐺 Cleaned Successfully! 🐺\033[0m\n"; \
 	fi
 
 fclean: clean
 	@rm -f $(NAME)
 	@make -s -C not_your_libft fclean
 	@if [ $(REBUILDING) -eq 0 ] && [ "$(MAKECMDGOALS)" = "fclean" ]; then \
-		printf "\033[1;33m🐺 Force Cleaned successfully! 🐺\033[0m\n"; \
+		printf "\033[1;33m🐺 Force Cleaned Successfully! 🐺\033[0m\n"; \
 	fi
 
 re: 
 	@$(MAKE) --no-print-directory fclean REBUILDING=1
 	@$(MAKE) --no-print-directory all REBUILDING=1
-	@printf "\033[1;34m🐺 Rebuilt successfully! 🐺\033[0m\n"
+	@printf "\033[1;34m🐺 Rebuilt Successfully! 🐺\033[0m\n"
 
 .PHONY: all clean fclean re
