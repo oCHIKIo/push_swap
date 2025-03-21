@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:33:29 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/19 01:51:34 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/21 03:04:11 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,22 @@ int	there_is_sign(char x)
 
 int	is_beyond_int_limits(const char *str)
 {
-	t_nbr	nbr;
+	int	x;
+	int	sign;
 
-	nbr.x = 0;
-	nbr.sign = 1;
-	nbr.res = 0;
-	nbr.digit_count = 0;
-	while (str[nbr.x] == ' ' || (str[nbr.x] >= 9 && str[nbr.x] <= 13))
-		nbr.x++;
-	if (str[nbr.x] == '-' || str[nbr.x] == '+')
+	x = 0;
+	sign = 1;
+	while (str[x] == ' ' || (str[x] >= 9 && str[x] <= 13))
+		x++;
+	if (there_is_sign(str[x]))
 	{
-		if (str[nbr.x++] == '-')
-			nbr.sign *= -1;
+		if (str[x] == '-')
+			sign = -1;
+		x++;
 	}
-	while (ft_isdigit(str[nbr.x]))
-	{
-		nbr.digit_count++;
-		if (nbr.digit_count > 10)
-			return (1);
-		nbr.res = nbr.res * 10 + (str[nbr.x++] - '0');
-		if ((nbr.sign == 1 && nbr.res > INT_MAX) || (nbr.sign == -1
-				&& nbr.res > (long long)INT_MAX + 1))
-			return (1);
-	}
-	return (0);
+	while (str[x] == '0')
+		x++;
+	return (check_digits(str, x, sign));
 }
 
 int	is_well_formed_number(char *num)

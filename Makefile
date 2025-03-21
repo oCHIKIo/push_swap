@@ -1,9 +1,6 @@
 NAME = push_swap
-
 CC = cc
-
-CFLAGS = -Wall -Wextra -Werror
-
+CFLAGS = -Wall -Wextra -Werror 
 LIBFT = not_your_libft/libft.a
 
 SRC =	Fighters/moves_1.c \
@@ -21,43 +18,42 @@ SRC =	Fighters/moves_1.c \
 		Fighters/nodes_goingback_home.c \
 		Fighters/stack_a_need_some_moves.c \
 		Fighters/stack_b_need_some_moves.c \
-		Fighters/understanding_deciphering.c 
+		Fighters/understanding_deciphering.c
 
 OBJ = $(SRC:.c=.o)
-
 REBUILDING = 0
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) 
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -Lnot_your_libft -lft 
+$(NAME): $(OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -Lnot_your_libft -lft
 	@if [ $(REBUILDING) -eq 0 ]; then \
-		printf "\033[1;32m🐺 Push_swap Built Successfully! 🐺\033[0m\n"; \
+		echo "\033[1;32m🐺 Push_swap Built Successfully! 🐺\033[0m"; \
 	fi
 
 $(LIBFT):
-	@make -s -C not_your_libft 
+	@make -s -C not_your_libft
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -Inot_your_libft -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
-	@make -s -C not_your_libft clean 
+	@make -s -C not_your_libft clean
 	@if [ $(REBUILDING) -eq 0 ] && [ "$(MAKECMDGOALS)" = "clean" ]; then \
-		printf "\033[1;31m🐺 Cleaned Successfully! 🐺\033[0m\n"; \
+		echo "\033[1;31m🐺 Cleaned Successfully! 🐺\033[0m"; \
 	fi
 
 fclean: clean
 	@rm -f $(NAME)
 	@make -s -C not_your_libft fclean
 	@if [ $(REBUILDING) -eq 0 ] && [ "$(MAKECMDGOALS)" = "fclean" ]; then \
-		printf "\033[1;33m🐺 Force Cleaned Successfully! 🐺\033[0m\n"; \
+		echo "\033[1;33m🐺 Force Cleaned Successfully! 🐺\033[0m"; \
 	fi
 
-re: 
+re:
 	@$(MAKE) --no-print-directory fclean REBUILDING=1
 	@$(MAKE) --no-print-directory all REBUILDING=1
-	@printf "\033[1;34m🐺 Rebuilt Successfully! 🐺\033[0m\n"
+	@echo "\033[1;34m🐺 Rebuilt Successfully! 🐺\033[0m"
 
 .PHONY: all clean fclean re

@@ -6,13 +6,13 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:00:45 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/19 01:01:30 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/21 02:31:59 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	set_everything_null(char tmp_av[][11])
+void	set_everything_null(char tmp_av[][100])
 {
 	int	x;
 	int	y;
@@ -21,7 +21,7 @@ void	set_everything_null(char tmp_av[][11])
 	while (x < 6666)
 	{
 		y = 0;
-		while (y < 11)
+		while (y < 100)
 		{
 			tmp_av[x][y] = '\0';
 			y++;
@@ -30,7 +30,7 @@ void	set_everything_null(char tmp_av[][11])
 	}
 }
 
-void	splitter(char *str, char tmp_av[][11], int *ac)
+void	splitter(char *str, char tmp_av[][100], int *ac)
 {
 	char	**tmp_input_arr;
 	int		x;
@@ -40,8 +40,7 @@ void	splitter(char *str, char tmp_av[][11], int *ac)
 	x = 0;
 	while (tmp_input_arr[x])
 	{
-		ft_strlcpy(tmp_av[*ac], tmp_input_arr[x],
-			ft_strlen(tmp_input_arr[x]) + 1);
+		ft_strlcpy(tmp_av[*ac], tmp_av[*ac], ft_strlen(tmp_input_arr[x]) + 1);
 		(*ac)++;
 		x++;
 	}
@@ -65,7 +64,7 @@ bool	its_string(char *str)
 	return (false);
 }
 
-char	**update_av(int updated_ac, char tmp_av[][11])
+char	**update_av(int updated_ac, char tmp_av[][100])
 {
 	int		x;
 	char	**new_av;
@@ -97,7 +96,7 @@ char	**deciphering(int *ac, char **av)
 {
 	int		x;
 	int		updated_ac;
-	char	tmp_av[6666][11];
+	char	tmp_av[6666][100];
 	char	**new_av;
 
 	set_everything_null(tmp_av);

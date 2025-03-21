@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:51:15 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/18 00:22:53 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/21 03:13:17 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,28 @@ int	print_error(void)
 void	del(void *nil)
 {
 	(void)nil;
+}
+
+int	check_digits(const char *str, int x, int sign)
+{
+	long long	res;
+	int			nerd;
+
+	res = 0;
+	nerd = 0;
+	while (ft_isdigit(str[x]))
+	{
+		nerd++;
+		if (nerd > 10)
+			return (1);
+		res = res * 10 + (str[x] - '0');
+		if (sign == 1 && res > INT_MAX)
+			return (1);
+		if (res > (long long)INT_MAX + 1)
+			return (1);
+		x++;
+	}
+	return (str[x] != '\0');
 }
 
 int	free_everything(t_value *data, int *input_arr, int *lis_arr, char **av)

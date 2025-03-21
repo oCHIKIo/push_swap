@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:27:54 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/19 01:51:02 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/21 03:04:48 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void			devider_value(t_value *data, int tmp_tab[], int size);
 
 bool			its_string(char *str);
 char			**deciphering(int *ac, char **av);
-void			set_everything_null(char tmp_av[][11]);
-char			**update_av(int updated_ac, char tmp_av[][11]);
-void			splitter(char *str, char tmp_av[][11], int *updated_ac);
+void			set_everything_null(char tmp_av[][100]);
+char			**update_av(int updated_ac, char tmp_av[][100]);
+void			splitter(char *str, char tmp_av[][100], int *updated_ac);
 
 /* ░█▄█░█▀█░█░█░█▀▀░█▀▀░░░▀█░ */
 /* ░█░█░█░█░▀▄▀░█▀▀░▀▀█░░░░█░ */
@@ -192,6 +192,7 @@ int				there_is_sign(char x);
 int				is_well_formed_number(char *num);
 int				is_beyond_int_limits(const char *str);
 int				understanding_deciphering(char **av, int ac);
+int				check_digits(const char *str, int x, int sign);
 
 /* ░█▀▀░▀█▀░█▀█░█▀▀░█░█░░░░░█▀█░░░░░█▀█░█▀▀░█▀▀░█▀▄░░░░ */
 /* ░▀▀█░░█░░█▀█░█░░░█▀▄░░░░░█▀█░░░░░█░█░█▀▀░█▀▀░█░█░░░░ */
