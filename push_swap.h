@@ -6,7 +6,7 @@
 /*   By: bchiki <bchiki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:27:54 by bchiki            #+#    #+#             */
-/*   Updated: 2025/03/21 17:11:13 by bchiki           ###   ########.fr       */
+/*   Updated: 2025/03/23 19:45:34 by bchiki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void			devider_value(t_value *data, int tmp_tab[], int size);
 
 bool			its_string(char *str);
 char			**deciphering(int *ac, char **av);
-void			set_everything_null(char tmp_av[][500]);
+void set_everything_null(char (*tmp_av)[500]);
 char			**update_av(int updated_ac, char tmp_av[][500]);
 void			splitter(char *str, char tmp_av[][500], int *updated_ac);
 
